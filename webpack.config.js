@@ -7,16 +7,21 @@ module.exports = {
         index: './src/index.js',
     },
     devtool: 'inline-source-map', //source map option, points to errors
+    devServer: {
+        static: './dist',
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'ToDo List - Development',
             template: './src/index.html',
         }),
     ],
-
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+    },
+    optimization: {
+        runtimeChunk: 'single',
     },
 };
