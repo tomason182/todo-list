@@ -31,7 +31,7 @@ header {
     padding-left: 2rem;
 }
 
-.main-container {
+#main-container {
     border: 1px solid green;
     width: 100%;
 
