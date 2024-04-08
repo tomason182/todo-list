@@ -7,7 +7,7 @@ function showMyDay(){
     const dayContainer = document.createElement('div');
     
     const dayTitle = document.createElement('h2');
-    dayTitle.textContent = 'My day';
+    dayTitle.textContent = 'My Day';
     
     dayContainer.appendChild(dayTitle);
 
