@@ -8,12 +8,11 @@ module.exports = {
     },
     devtool: 'inline-source-map', //source map option, points to errors
     devServer: {
-        static: './dist',
+        static: './src',
         hot: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'ToDo List - Development',
             template: './src/index.html',
         }),
     ],
