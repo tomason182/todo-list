@@ -1,7 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 header {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
-    background-color: rgba(22,22,23, .8);
+    background-color: #3a86ff80;
     color: #fff;
+}
+
+.content {
+    display: flex;
+}
+
+.sidebar-container {
+    border: 1px solid grey;
+    width: 22rem;
+    background-color: #3a86ff30;
+    color: #000;
+}
+
+.sidebar-container > ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+.sidebar-container > ul > li {
+    padding-top: .5rem;
+    padding-left: 2rem;
+}
+
+.main-container {
+    border: 1px solid green;
+    width: 100%;
+
 }
