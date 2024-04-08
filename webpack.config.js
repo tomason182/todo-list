@@ -9,6 +9,7 @@ module.exports = {
     devtool: 'inline-source-map', //source map option, points to errors
     devServer: {
         static: './dist',
+        hot: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
