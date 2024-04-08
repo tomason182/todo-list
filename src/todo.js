@@ -12,6 +12,7 @@ function showMyDay(){
     dayContainer.appendChild(dayTitle);
 
     mainContainer.appendChild(dayContainer);
-    
+
 }
 
+export {showMyDay}
