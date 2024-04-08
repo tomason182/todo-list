@@ -21,15 +21,33 @@ header {
     color: #000;
 }
 
+.sidebar-items {
+    padding: 0;
+}
+
 .sidebar-container > ul {
-    text-decoration: none;
     list-style: none;
 }
 
 .sidebar-container > ul > li {
     padding-top: .5rem;
-    padding-left: 2rem;
+    cursor:pointer;
 }
+
+.sidebar-container > ul > li > .my-day {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    width: 100%;
+    height: 2.5rem;
+}
+
+.sidebar-container > ul > li > .my-day:hover {
+    background-color: blue;
+    color: #fff
+}
+
 
 #main-container {
     border: 1px solid green;

@@ -1,13 +1,15 @@
 import './styles.css';
 import { showMyDay } from './todo';
 
-handleSidebarClicks = ()=> {
+const handleSidebarClicks = ()=> {
     const sidebarItems = document.querySelector('.content > .sidebar-container > .sidebar-items');
 
     sidebarItems.addEventListener('click', () => {
         showMyDay();
     });
 }
+
+handleSidebarClicks();
 
 
 console.log('everything is working awesome!')
