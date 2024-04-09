@@ -48,9 +48,18 @@ header {
     color: #fff
 }
 
-
 #main-container {
+    display: flex;
+    justify-content: center;
     border: 1px solid green;
     width: 100%;
+    padding: 1rem 0;
 
+}
+
+.day-container {
+    min-width: 400px;
+    width: 33vw;
+    min-height: 500px;
+    border: 1px solid black; 
 }
