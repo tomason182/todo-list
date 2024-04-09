@@ -89,6 +89,10 @@ function handleUserInput() {
     })
 }
 
+function createTask (name, date) {
+    return {name, date};    
+}
+
 export {showMyDay}
 
 
