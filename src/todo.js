@@ -1,15 +1,17 @@
 const mainContainer  = document.getElementById('main-container');
 
+function createElementWithClass(tagName, className) {
+    const element = document.createElement(tagName);
+    element.classList.add(className);
+    return element;
+}
+
 function showMyDay(){   
 
     mainContainer.innerHTML = '';
 
-    const dayContainer = document.createElement('div');
-    dayContainer.classList.add('day-container');
-    
-    const dayHeader = document.createElement('div');
-    dayHeader.classList.add('day-header');
-
+    const dayContainer = createElementWithClass('div', 'day-container');
+    const dayTitleContainer = createElementWithClass('div', 'day-title-container')
     const dayTitle = document.createElement('h2');
     dayTitle.classList.add('day-title');
     dayTitle.textContent = 'My Day';
@@ -18,9 +20,11 @@ function showMyDay(){
     todayDate.classList.add('today-date');
     todayDate.textContent = dates();
 
-    dayHeader.appendChild(dayTitle);
-    dayHeader.appendChild(todayDate);    
-    dayContainer.appendChild(dayHeader);
+    dayTitleContainer.appendChild(dayTitle);
+    dayTitleContainer.appendChild(todayDate);    
+    dayContainer.appendChild(dayTitleContainer);
+
+    
     mainContainer.appendChild(dayContainer);
 
 }
