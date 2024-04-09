@@ -15,7 +15,7 @@ function showMyDay(){
     }
 
     // clean the main container
-    mainContainer.innerHTML = '';
+    mainContainer.innerHTML = ''; //mainContainer is declare before...
 
     const dayContainer = createElementWithClass('div', 'day-container');
     
@@ -29,13 +29,9 @@ function showMyDay(){
     dayTitle.classList.add('day-title');
     dayTitle.textContent = 'My Day';
 
-    const todayDate = document.createElement('h2');
-    todayDate.classList.add('today-date');
-    todayDate.textContent = dates();
-
-    //dayMainContainer show daily tasks
-    const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
-    dailyTaskList.innerHTML = `<li>this is the first task. Should take info from un input(textarea)</li>`;
+    const todaysDate = document.createElement('h2');
+    todaysDate.classList.add('today-date');
+    todaysDate.textContent = dates();    
 
     //addTaskContainer allows user to add a task
     const addTask = createElementWithClass('input', 'task-input');
@@ -45,13 +41,12 @@ function showMyDay(){
 
     //append dayTitle and todayDate to dayTitleContainer
     dayTitleContainer.appendChild(dayTitle);
-    dayTitleContainer.appendChild(todayDate);
+    dayTitleContainer.appendChild(todaysDate);
 
     //append addTask into addTaskContainer
     addTaskContainer.appendChild(addTask);
 
     //append dailyTaskList to dayMainContainer
-    dayMainContainer.appendChild(dailyTaskList);
     dayMainContainer.appendChild(addTaskContainer);
 
     //append elements to dayContainer
@@ -61,8 +56,9 @@ function showMyDay(){
     //append the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
 
-    handleUserInput();
-    console.log(handleUserInput)
+    const taskInput = document.querySelector('.task-input');
+    handleUserInput(taskInput, dayMainContainer);
+
 }
 
 function dates() {
@@ -75,22 +71,18 @@ function dates() {
     return `${formattedDay}.${formattedMonth}`;
 }
 
-function handleUserInput() {
-    const input = document.querySelector('.add-task-container');
-
-    if(!input){
-        console.log('input not allow');
-        return;
-    }
-
-    input.addEventListener('submit', ()=> {
-        const getTask = document.querySelector('.task-input').value;
-        return getTask;
-    })
-}
-
-function createTask (name, date) {
-    return {name, date};    
+function handleUserInput(inputElement, container) {
+    inputElement.addEventListener('keydown', (event)=> {
+        if(event.key === 'Enter') {
+            const task = inputElement.value.trim();
+            if (task) {
+                const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
+                dailyTaskList.innerHTML = `<li>${task}</li>`;
+                container.appendChild(dailyTaskList);
+                inputElement.value = '';                
+            };
+        };
+    });
 }
 
 export {showMyDay}
