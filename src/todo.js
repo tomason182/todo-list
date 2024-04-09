@@ -21,44 +21,46 @@ function showMyDay(){
     
     //create three container that goes inside dayContainer with class name
     const dayTitleContainer = createElementWithClass('div', 'day-title-container');
-    const dayMainContainer = createElementWithClass('div', 'day-main-container');
-    const addTaskContainer = createElementWithClass('div', 'add-task-container');
+    const dayListContainer = createElementWithClass('div', 'day-list-container');
+    const dayInputContainer = createElementWithClass('div', 'day-input-container');
 
-    //dayTitle and todayDate goes inside dayTitle container
+    //create dayTitle and todayDate and append them to dayTitleContainer
     const dayTitle = document.createElement('h2');
     dayTitle.classList.add('day-title');
     dayTitle.textContent = 'My Day';
 
-    const todaysDate = document.createElement('h2');
-    todaysDate.classList.add('today-date');
-    todaysDate.textContent = dates();    
+    const todayDate = document.createElement('h2');
+    todayDate.classList.add('today-date');
+    todayDate.textContent = dates();
 
-    //addTaskContainer allows user to add a task
+    dayTitleContainer.appendChild(dayTitle);
+    dayTitleContainer.appendChild(todayDate)
+    
+    //creates a list of tasks and append it to dayListContainer
+    const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
+    dayListContainer.appendChild(dailyTaskList);
+
+
+    //creates an input and append it to the dayInputContainer
     const addTask = createElementWithClass('input', 'task-input');
     addTask.type = "text";
     addTask.name = "daily-task";
     addTask.placeholder = "add a task";
 
-    //append dayTitle and todayDate to dayTitleContainer
-    dayTitleContainer.appendChild(dayTitle);
-    dayTitleContainer.appendChild(todaysDate);
+    dayInputContainer.appendChild(addTask);
 
-    //append addTask into addTaskContainer
-    addTaskContainer.appendChild(addTask);
+    //append dayTitleContainer, dayListContainer and dayInputContainer to dayContainer
 
-    //append dailyTaskList to dayMainContainer
-    dayMainContainer.appendChild(addTaskContainer);
-
-    //append elements to dayContainer
     dayContainer.appendChild(dayTitleContainer);
-    dayContainer.appendChild(dayMainContainer);
+    dayContainer.appendChild(dayListContainer);
+    dayContainer.appendChild(dayInputContainer);
 
-    //append the dayContainer to mainContainer
+    //appends the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
 
+    //add task to the daily list
     const taskInput = document.querySelector('.task-input');
-    handleUserInput(taskInput, dayMainContainer);
-
+    handleUserInput(taskInput, dailyTaskList);
 }
 
 function dates() {
@@ -76,9 +78,9 @@ function handleUserInput(inputElement, container) {
         if(event.key === 'Enter') {
             const task = inputElement.value.trim();
             if (task) {
-                const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
-                dailyTaskList.innerHTML = `<li>${task}</li>`;
-                container.appendChild(dailyTaskList);
+                const newTask = document.createElement('li');
+                newTask.textContent = task;
+                container.appendChild(newTask);
                 inputElement.value = '';                
             };
         };
