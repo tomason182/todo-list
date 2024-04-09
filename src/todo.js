@@ -8,15 +8,23 @@ function createElementWithClass(tagName, className) {
 
 function showMyDay(){   
 
+    //check if main container exists before proceeding
     if(!mainContainer) {
         console.log('Main container element not found');
         return;
     }
 
+    // clean the main container
     mainContainer.innerHTML = '';
 
     const dayContainer = createElementWithClass('div', 'day-container');
-    const dayTitleContainer = createElementWithClass('div', 'day-title-container')
+    
+    //create three container that goes inside dayContainer with class name
+    const dayTitleContainer = createElementWithClass('div', 'day-title-container');
+    const dayMainContainer = createElementWithClass('div', 'day-main-container');
+    const dayAddTaskContainer = createElementWithClass('div', 'day-add-task-container');
+
+    //dayTitle and todayDate goes inside dayTitle container
     const dayTitle = document.createElement('h2');
     dayTitle.classList.add('day-title');
     dayTitle.textContent = 'My Day';
@@ -25,9 +33,16 @@ function showMyDay(){
     todayDate.classList.add('today-date');
     todayDate.textContent = dates();
 
+    //dayMainContainer show daily tasks
+    const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
+    dailyTaskList.innerHTML = `<li>this is the first task. Should take info from un input</li>`;
+
+
     dayTitleContainer.appendChild(dayTitle);
-    dayTitleContainer.appendChild(todayDate);    
+    dayTitleContainer.appendChild(todayDate);
+    dayMainContainer.appendChild(dailyTaskList);
     dayContainer.appendChild(dayTitleContainer);
+    dayContainer.appendChild(dayMainContainer);
 
 
     mainContainer.appendChild(dayContainer);
