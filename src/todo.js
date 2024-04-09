@@ -22,7 +22,7 @@ function showMyDay(){
     //create three container that goes inside dayContainer with class name
     const dayTitleContainer = createElementWithClass('div', 'day-title-container');
     const dayMainContainer = createElementWithClass('div', 'day-main-container');
-    const AddTaskContainer = createElementWithClass('div', 'day-add-task-container');
+    const addTaskContainer = createElementWithClass('div', 'add-task-container');
 
     //dayTitle and todayDate goes inside dayTitle container
     const dayTitle = document.createElement('h2');
@@ -35,20 +35,24 @@ function showMyDay(){
 
     //dayMainContainer show daily tasks
     const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
-    dailyTaskList.innerHTML = `<li>this is the first task. Should take info from un input</li>`;
+    dailyTaskList.innerHTML = `<li>this is the first task. Should take info from un input(textarea)</li>`;
 
     //addTaskContainer allows user to add a task
-    const addTask = createElementWithClass('input', 'add-task-input');
+    const addTask = createElementWithClass('input', 'task-input');
     addTask.type = "text";
     addTask.name = "daily-task";
+    addTask.placeholder = "add a task";
 
     //append dayTitle and todayDate to dayTitleContainer
     dayTitleContainer.appendChild(dayTitle);
     dayTitleContainer.appendChild(todayDate);
 
+    //append addTask into addTaskContainer
+    addTaskContainer.appendChild(addTask);
+
     //append dailyTaskList to dayMainContainer
     dayMainContainer.appendChild(dailyTaskList);
-    dayMainContainer.appendChild(addTask);
+    dayMainContainer.appendChild(addTaskContainer);
 
     //append elements to dayContainer
     dayContainer.appendChild(dayTitleContainer);
@@ -56,6 +60,9 @@ function showMyDay(){
 
     //append the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
+
+    handleUserInput();
+    console.log(handleUserInput)
 }
 
 function dates() {
@@ -68,4 +75,20 @@ function dates() {
     return `${formattedDay}.${formattedMonth}`;
 }
 
+function handleUserInput() {
+    const input = document.querySelector('.add-task-container');
+
+    if(!input){
+        console.log('input not allow');
+        return;
+    }
+
+    input.addEventListener('submit', ()=> {
+        const getTask = document.querySelector('.task-input').value;
+        return getTask;
+    })
+}
+
 export {showMyDay}
+
+
