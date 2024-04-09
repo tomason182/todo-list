@@ -22,7 +22,7 @@ function showMyDay(){
     //create three container that goes inside dayContainer with class name
     const dayTitleContainer = createElementWithClass('div', 'day-title-container');
     const dayMainContainer = createElementWithClass('div', 'day-main-container');
-    const dayAddTaskContainer = createElementWithClass('div', 'day-add-task-container');
+    const AddTaskContainer = createElementWithClass('div', 'day-add-task-container');
 
     //dayTitle and todayDate goes inside dayTitle container
     const dayTitle = document.createElement('h2');
@@ -37,10 +37,14 @@ function showMyDay(){
     const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
     dailyTaskList.innerHTML = `<li>this is the first task. Should take info from un input</li>`;
 
+    //addTaskContainer allows user to add a task
+    const addTask = createElementWithClass('input', 'add-task-input');
+
 
     dayTitleContainer.appendChild(dayTitle);
     dayTitleContainer.appendChild(todayDate);
     dayMainContainer.appendChild(dailyTaskList);
+    dayMainContainer.appendChild(addTask);
     dayContainer.appendChild(dayTitleContainer);
     dayContainer.appendChild(dayMainContainer);
 
