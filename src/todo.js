@@ -8,6 +8,11 @@ function createElementWithClass(tagName, className) {
 
 function showMyDay(){   
 
+    if(!mainContainer) {
+        console.log('Main container element not found');
+        return;
+    }
+
     mainContainer.innerHTML = '';
 
     const dayContainer = createElementWithClass('div', 'day-container');
@@ -24,7 +29,7 @@ function showMyDay(){
     dayTitleContainer.appendChild(todayDate);    
     dayContainer.appendChild(dayTitleContainer);
 
-    
+
     mainContainer.appendChild(dayContainer);
 
 }
