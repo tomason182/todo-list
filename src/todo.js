@@ -16,7 +16,7 @@ function showMyDay(){
 
     const todayDate = document.createElement('h2');
     todayDate.classList.add('today-date');
-    todayDate.textContent = dates(); //should call a class that return formatted date
+    todayDate.textContent = dates();
 
     dayHeader.appendChild(dayTitle);
     dayHeader.appendChild(todayDate);    
