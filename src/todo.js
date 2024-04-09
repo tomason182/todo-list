@@ -39,18 +39,23 @@ function showMyDay(){
 
     //addTaskContainer allows user to add a task
     const addTask = createElementWithClass('input', 'add-task-input');
+    addTask.type = "text";
+    addTask.name = "daily-task";
 
-
+    //append dayTitle and todayDate to dayTitleContainer
     dayTitleContainer.appendChild(dayTitle);
     dayTitleContainer.appendChild(todayDate);
+
+    //append dailyTaskList to dayMainContainer
     dayMainContainer.appendChild(dailyTaskList);
     dayMainContainer.appendChild(addTask);
+
+    //append elements to dayContainer
     dayContainer.appendChild(dayTitleContainer);
     dayContainer.appendChild(dayMainContainer);
 
-
+    //append the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
-
 }
 
 function dates() {
