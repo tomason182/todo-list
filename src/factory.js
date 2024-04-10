@@ -53,10 +53,39 @@ function storeTaskInLocalStorage (newTask){
 
     }else{
         alert('Too bad, localStorage not available or full')
-    }  
+    }
 
-    
 }
+
+function generateStorageKey(){
+
+    const localStorageKeys = new Set();
+
+    try {
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            localStorageKeys.add(key);
+        }
+    } catch(error) {
+        console.error("Error accessing Local Storage", error);
+        return 'default-key';
+    }
+
+    const maxKeys = 999;
+
+    if (localStorage.length >= maxKeys) {
+        alert("Maximum amount of tasks reached");
+        return null;
+    }
+
+    while (true) {
+        const keyGenerator = Math.floor(Math.random()* 10000);
+        if (!localStorageKeys.has(keyGenerator.toString())) {
+            return keyGenerator.toString();
+        }
+    }
+}
+
 
 function storageAvailable(type) {
     let storage;
