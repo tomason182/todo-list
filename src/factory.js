@@ -36,20 +36,6 @@ function createTask (title, description, dueDate = new Date(), priority, status)
     return { ...task, editTaskTitle, editDueDate, editPriority, editStatus};
 }
 
-function storeTaskInLocalStorage (newTask){
-
-    if (storageAvailable("localStorage")) {
-        try{
-            localStorage.setItem(newTask.key, JSON.stringify(newTask));
-
-        } catch (e) {
-            alert(e);
-        }
-    }else{
-        alert('Too bad, localStorage not available or full')
-    }
-}
-
 function generateStorageKey(){
 
     const localStorageKeys = new Set();
@@ -76,33 +62,5 @@ function generateStorageKey(){
         if (!localStorageKeys.has(keyGenerator.toString())) {
             return keyGenerator.toString();
         }
-    }
-}
-
-
-function storageAvailable(type) {
-    let storage;
-    try {
-        storage = window[type];
-        const x = "__storage_test__";
-        storage.setItem(x,x);
-        storage.removeItem(x);
-        return true;
-    } catch (e) {
-        return (
-            e instanceof DOMException &&
-            //all browsers except firefox
-            (e.code === 22 ||
-            //firefox
-            e.code === 1014 ||
-            //test name field too, because code might not be present
-            //all browsers except firefox
-            e.name === "QuotaExceededError" ||
-            //firefox
-            e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
-            //acknowledge QuotaExceedError only if there is something already store
-            storage &&
-            storage.length !== 0
-        );
     }
 }
