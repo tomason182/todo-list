@@ -6,6 +6,7 @@ function createTask (title, description, dueDate = new Date(), priority, status)
         dueDate,
         priority,
         status,
+        key: generateStorageKey(),
     };
 
     const editTaskTitle = function(newTitle) {
@@ -30,7 +31,7 @@ function createTask (title, description, dueDate = new Date(), priority, status)
 
     const storeTask = function() {
         //function to store created task
-    } 
+    }
 
     return { ...task, editTaskTitle, editDueDate, editPriority, editStatus};
 }
