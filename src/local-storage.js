@@ -66,3 +66,5 @@ function storageAvailable(type) {
         );
     }
 }
+
+export {setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage}
