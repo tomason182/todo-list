@@ -1,4 +1,4 @@
-function createTask (title, description, dueDate, priority, status) {
+function createTask (title, description, dueDate = new Date(), priority, status) {
 
     const task = {
         title,
