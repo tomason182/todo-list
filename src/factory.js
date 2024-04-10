@@ -1,3 +1,5 @@
+import { setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage } from "./local-storage";
+
 function createTask (title, description, dueDate = new Date(), priority, status) {
 
     const task = {
