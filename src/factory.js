@@ -40,22 +40,14 @@ function storeTaskInLocalStorage (newTask){
 
     if (storageAvailable("localStorage")) {
         try{
-            const taskList = JSON.parse(localStorage.getItem("taskList"));
-            if (!taskList) {
-                const taskList = [];
-            }
+            localStorage.setItem(newTask.key, JSON.stringify(newTask));
 
-            taskList.push(newTask);
-            //store the hole list of task in one key
-            localStorage.setItem("taskList", JSON.stringify(taskList));
         } catch (e) {
             alert(e);
         }
-
     }else{
         alert('Too bad, localStorage not available or full')
     }
-
 }
 
 function generateStorageKey(){
