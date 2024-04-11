@@ -1,41 +1,70 @@
 import { setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage } from "./local-storage";
 
-function createTask (title, description, dueDate = new Date(), priority, status) {
-
-    const task = {
-        title,
-        description,
-        dueDate,
-        priority,
-        status,
-        key: generateStorageKey(),
-    };
-
-    const editTaskTitle = function(newTitle) {
-        this.title = newTitle;
+class Task {
+    constructor(title, description, dueDate, priority, status ){
+        this._title = title;
+        this._description = description;
+        this._dueDate = dueDate;
+        this._priority = priority;
+        this._status = status;
+        this._key = generateStorageKey();
+        this._taskId = generateTaskId();
     }
 
-    const editDueDate = function(newDueDate) {
-        this.dueDate = new Date(newDueDate);
+    //getter and setter for title
+    get title() {
+        return this._title;
+    }
+    set title(value) {
+        this._title = value;
     }
 
-    const editPriority = function(newPriority) {
-        this.priority = newPriority;
+    //getter and setter for description
+    get description() {
+        return this._description;
+    }
+    set description(value) {
+        this._description = value;
     }
 
-    const editStatus = function(newStatus) {
-        this.status = newStatus;
+    // Getter and setter for dueDate
+    get dueDate() {
+        return this._dueDate;
+    }
+    set dueDate(value) {
+        this._dueDate = value;
     }
 
-    const removeTask = function() {
-        //function to remove selected task
+    // Getter and setter for priority
+    get priority() {
+        return this._priority;
+    }
+    set priority(value) {
+        this._priority = value;
     }
 
-    const storeTask = function() {
-        //function to store created task
+    // Getter and setter for status
+    get status() {
+        return this._status;
+    }
+    set status(value) {
+        this._status = value;
     }
 
-    return { ...task, editTaskTitle, editDueDate, editPriority, editStatus};
+    // Methods
+    removeTask() {
+        removeTaskFromLocalStorage(this._key);
+    }
+
+    storeTask() {
+        setTaskInLocalStorage(this);
+    }
+
+    validateTaskId() {
+        // Method for validating taskId when the user edit a task.
+        // Method should compare the this._taskId of this object with the
+        // taskId of the retrieved taskId from the localeStorage.
+    }
 }
 
 function generateStorageKey(){
