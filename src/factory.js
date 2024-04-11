@@ -1,7 +1,7 @@
 import { setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage } from "./local-storage";
 
 class Task {
-    constructor(title, description, dueDate, priority, status ){
+    constructor(title, description, dueDate = new Date(), priority, status ){
         this._title = title;
         this._description = description;
         this._dueDate = dueDate;
