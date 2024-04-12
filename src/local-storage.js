@@ -5,7 +5,7 @@ function setTaskInLocalStorage(task) {
     }
 
     try {
-        localStorage.setItem(task.key, JSON.stringify(task));
+        localStorage.setItem(task._key, JSON.stringify(task));
         return true;
     } catch(error) {
         console.error("Error storing task in Local Storage: ", error);

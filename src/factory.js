@@ -103,7 +103,7 @@ function generateStorageKey(){
 
 function getRandomUUID() {
     try{
-        if(!globalThis.crypto || globalThis.crypto.randomUUID){
+        if(!globalThis.crypto || !globalThis.crypto.randomUUID){
             throw new Error('Failed to generate UUID: Crypto unavailable');
         }
 
