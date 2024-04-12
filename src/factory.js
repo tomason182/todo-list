@@ -1,14 +1,13 @@
 import { setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage } from "./local-storage";
 
 class Task {
-    constructor(title, description, dueDate = new Date(), priority, status ){
+    constructor(title, description, dueDate = new Date(), priority, status, key = generateStorageKey()){
         this._title = title;
         this._description = description;
         this._dueDate = dueDate;
         this._priority = priority;
         this._status = status;
-        this._key = generateStorageKey();
-        this._taskId = getRandomUUID();
+        this._key = key;
     }
 
     //getter and setter for title
