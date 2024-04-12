@@ -8,7 +8,7 @@ class Task {
         this._priority = priority;
         this._status = status;
         this._key = generateStorageKey();
-        this._taskId = generateTaskId();
+        this._taskId = getRandomUUID();
     }
 
     //getter and setter for title
