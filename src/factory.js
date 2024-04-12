@@ -60,6 +60,11 @@ class Task {
         setTaskInLocalStorage(this);
     }
 
+    getStoreTask() {
+        const storedTask = getTaskFromLocalStorage(this._key);
+        return storedTask;
+    }
+
     validateTaskId() {
         // Method for validating taskId when the user edit a task.
         // Method should compare the this._taskId of this object with the
@@ -105,7 +110,7 @@ function getRandomUUID() {
         return uuid = globalThis.crypto.randomUUID();
     }catch(error){
         console.log('Error generating UUID: ', error);
-        alert('An error occurred while generating a random ID. Please try again later.')
+        alert('An error occurred while generating a random ID. Please try again later.');
     }
 
 }
