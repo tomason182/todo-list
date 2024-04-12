@@ -51,25 +51,10 @@ class Task {
         this._status = value;
     }
 
-    // Methods
-    removeTask() {
-        removeTaskFromLocalStorage(this._key);
-    }
-
     storeTask() {
         setTaskInLocalStorage(this);
     }
 
-    getStoreTask() {
-        const storedTask = getTaskFromLocalStorage(this._key);
-        return storedTask;
-    }
-
-    validateTaskId() {
-        // Method for validating taskId when the user edit a task.
-        // Method should compare the this._taskId of this object with the
-        // taskId of the retrieved taskId from the localeStorage.
-    }
 }
 
 function generateStorageKey(){
