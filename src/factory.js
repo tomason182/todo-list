@@ -54,6 +54,10 @@ class Task {
         setTaskInLocalStorage(this);
     }
 
+    removeTask() {
+        removeTaskFromLocalStorage(this._key);
+    }
+
 }
 
 function generateStorageKey(){
@@ -83,18 +87,4 @@ function generateStorageKey(){
             return keyGenerator.toString();
         }
     }
-}
-
-function getRandomUUID() {
-    try{
-        if(!globalThis.crypto || !globalThis.crypto.randomUUID){
-            throw new Error('Failed to generate UUID: Crypto unavailable');
-        }
-
-        return uuid = globalThis.crypto.randomUUID();
-    }catch(error){
-        console.log('Error generating UUID: ', error);
-        alert('An error occurred while generating a random ID. Please try again later.');
-    }
-
 }
