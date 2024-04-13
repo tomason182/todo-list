@@ -1,3 +1,5 @@
+import Task from "./factory";
+
 const mainContainer  = document.getElementById('main-container');
 
 function createElementWithClass(tagName, className) {
@@ -31,7 +33,7 @@ function showMyDay(){
 
     const todayDate = document.createElement('h2');
     todayDate.classList.add('today-date');
-    todayDate.textContent = dates();
+    todayDate.textContent = dates().getToday()[0];
 
     dayTitleContainer.appendChild(dayTitle);
     dayTitleContainer.appendChild(todayDate)
@@ -58,9 +60,7 @@ function showMyDay(){
     //appends the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
 
-    //add task to the daily list
-    const taskInput = document.querySelector('.task-input');
-    handleUserInput(taskInput, dailyTaskList);
+    handleUserInput();
 }
 
 function dates() {
@@ -78,15 +78,20 @@ function dates() {
     return {getToday};
 }
 
-function handleUserInput(inputElement, container) {
-    inputElement.addEventListener('keydown', (event)=> {
+function handleUserInput() {
+    const element = document.querySelector('.task-input');
+
+    element.addEventListener('keydown', (event)=> {
         if(event.key === 'Enter') {
-            const task = inputElement.value.trim();
-            if (task) {
-                const newTask = document.createElement('li');
-                newTask.textContent = task;
-                container.appendChild(newTask);
-                inputElement.value = '';                
+            const taskTitle = element.value.trim();
+            if (taskTitle) {
+                const newTask = new Task(taskTitle);
+                newTask.storeTask();
+                const taskList = document.querySelector('.daily-task-list');
+                const liElement = document.createElement('li');
+                liElement.textContent = newTask.title;
+                taskList.appendChild(liElement);
+                element.value = '';
             };
         };
     });
