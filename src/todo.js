@@ -64,13 +64,18 @@ function showMyDay(){
 }
 
 function dates() {
-    const today = new Date();
-    const day = today.getDate();
-    const month = today.getMonth() + 1; // Month are zero-indexed
 
-    const formattedDay = String(day).padStart(2,'0');
-    const formattedMonth = String(month).padStart(2,'0');
-    return `${formattedDay}.${formattedMonth}`;
+    const getToday = () => {
+        const today = new Date();
+        const day = today.getDate();
+        const month = today.getMonth() + 1; // Month are zero-indexed
+
+        const formattedDay = String(day).padStart(2,'0');
+        const formattedMonth = String(month).padStart(2,'0');
+        return [`${formattedDay}.${formattedMonth}`, day, month];
+    }
+    
+    return {getToday};
 }
 
 function handleUserInput(inputElement, container) {
