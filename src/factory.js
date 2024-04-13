@@ -1,6 +1,6 @@
 import { setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage } from "./local-storage";
 
-class Task {
+export default class Task {
     constructor(title, description, dueDate = new Date(), priority, status, key = generateStorageKey()){
         this._title = title;
         this._description = description;
@@ -110,5 +110,4 @@ function retrieveStoredTasks(date, month){
             tasks.push(storedTask);
         }
     }
-
 }
