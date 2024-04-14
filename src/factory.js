@@ -57,7 +57,6 @@ export default class Task {
     removeTask() {
         removeTaskFromLocalStorage(this._key);
     }
-
 }
 
 function generateStorageKey(){
@@ -97,7 +96,6 @@ function reCreateTask(key) {
 function retrieveStoredTasks(date, month){
     numberOfTaskInStorage = localStorage.length;
     const tasks = [];
-    
 
     if(!numberOfTaskInStorage){
         return tasks;
@@ -111,3 +109,5 @@ function retrieveStoredTasks(date, month){
         }
     }
 }
+
+export {reCreateTask, retrieveStoredTasks};
