@@ -60,6 +60,7 @@ function showMyDay(){
     //appends the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
 
+    displayStoreTasks();
     handleUserInput();
 }
 
@@ -95,6 +96,11 @@ function handleUserInput() {
             };
         };
     });
+}
+
+function displayStoredTasks() {
+    //This function will retrieve tasks from the local store
+    //and displays them in the corresponding container
 }
 
 export {showMyDay}
