@@ -108,6 +108,8 @@ function retrieveStoredTasks(date, month){
             tasks.push(storedTask);
         }
     }
+
+    return tasks;
 }
 
 export {reCreateTask, retrieveStoredTasks};
