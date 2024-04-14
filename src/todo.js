@@ -1,4 +1,5 @@
 import Task from "./factory";
+import { reCreateTask, retrieveStoredTasks } from "./factory";
 
 const mainContainer  = document.getElementById('main-container');
 
@@ -60,7 +61,7 @@ function showMyDay(){
     //appends the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
 
-    displayStoreTasks();
+    restoreStoredTasks(new Date());
     handleUserInput();
 }
 
@@ -98,9 +99,19 @@ function handleUserInput() {
     });
 }
 
-function displayStoredTasks() {
-    //This function will retrieve tasks from the local store
-    //and displays them in the corresponding container
+function restoreStoredTasks(date) {
+    const day = date.getDate();
+    const month = date.getMonth();
+    const taskList = retrieveStoredTasks(day, month);
+
+    taskList.forEach((task) => {
+        const taskObj = reCreateTask(task._key);
+        const taskList = document.querySelector('.daily-task-list');
+        const liElement = document.createElement('li');
+        liElement.textContent = taskObj.title;
+        taskList.appendChild(liElement);
+    });
+
 }
 
 export {showMyDay}
