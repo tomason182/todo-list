@@ -11,5 +11,6 @@ const handleSidebarClicks = ()=> {
 
 handleSidebarClicks();
 
+showMyDay();
 
 console.log('everything is working awesome!')
