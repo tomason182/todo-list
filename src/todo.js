@@ -114,6 +114,10 @@ function restoreStoredTasks(date) {
 
 }
 
+function handleProjectsInputs() {
+    //here goes code for handling the projects...
+}
+
 export {showMyDay}
 
 

@@ -11,12 +11,10 @@ const handleSidebarClicks = () => {
 
     addProject.addEventListener('click', () => {
         console.log('adding project still working');
-    })
-    
+    });
 }
 
 handleSidebarClicks();
-
 
 showMyDay();
 
