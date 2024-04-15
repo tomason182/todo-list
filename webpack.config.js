@@ -28,6 +28,14 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.svg$/,
+                type: 'asset/inline',
+            }
         ],
     },
     optimization: {
