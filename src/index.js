@@ -4,7 +4,7 @@ import { showMyDay } from './todo';
 const handleSidebarClicks = () => {
     const sidebarItems = document.querySelector('.content > .sidebar-container > .sidebar-items');
     const addProject = document.querySelector('.project-container-header > .add-project-button');
-    const projectDialog = document.getElementById('project-dialog')
+    const projectDialog = document.getElementById('project-dialog');    
 
     sidebarItems.addEventListener('click', () => {
         showMyDay();
@@ -13,6 +13,13 @@ const handleSidebarClicks = () => {
     addProject.addEventListener('click', () => {
         projectDialog.showModal();
     });
+
+    if(projectDialog){
+        const cancelProjectDialog = document.getElementById('cancel-add-project-dialog');
+        cancelProjectDialog.addEventListener('click', () => {
+        projectDialog.close();
+        });
+    }    
 }
 
 handleSidebarClicks();
