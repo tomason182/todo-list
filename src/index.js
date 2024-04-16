@@ -1,7 +1,7 @@
 import './styles.css';
 import { showMyDay, handleProjectsInputs } from './todo';
 
-const handleSidebarClicks = () => {
+const handleSidebarElements = () => {
     const sidebarItems = document.querySelector('.content > .sidebar-container > .sidebar-items');
     const addProject = document.querySelector('.project-container-header > .add-project-button');
     const projectDialog = document.getElementById('project-dialog');    
@@ -52,7 +52,7 @@ const handleSidebarClicks = () => {
 
 }
 
-handleSidebarClicks();
+handleSidebarElements();
 showMyDay();
 
 console.log('everything is working awesome!');
