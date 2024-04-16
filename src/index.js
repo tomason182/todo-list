@@ -18,7 +18,7 @@ const handleSidebarClicks = () => {
     cancelProjectDialog.addEventListener('click', () => {
         projectDialog.close();
     });
-    }
+}
 
 handleSidebarClicks();
 
