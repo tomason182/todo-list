@@ -14,13 +14,11 @@ const handleSidebarClicks = () => {
         projectDialog.showModal();
     });
 
-    if(projectDialog){
-        const cancelProjectDialog = document.getElementById('cancel-add-project-dialog');
-        cancelProjectDialog.addEventListener('click', () => {
+    const cancelProjectDialog = document.getElementById('cancel-add-project-dialog');
+    cancelProjectDialog.addEventListener('click', () => {
         projectDialog.close();
-        });
-    }    
-}
+    });
+    }
 
 handleSidebarClicks();
 
