@@ -34,7 +34,7 @@ header {
     cursor:pointer;
 }
 
-.sidebar-container > ul > li > .my-day {
+.sidebar-container > ul > li > .day-week-calendar-filter {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -43,7 +43,7 @@ header {
     height: 2.5rem;
 }
 
-.sidebar-container > ul > li > .my-day:hover {
+.sidebar-container > ul > li > .day-week-calendar-filter:hover {
     background-color: blue;
     color: #fff
 }
