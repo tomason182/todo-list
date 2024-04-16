@@ -115,9 +115,11 @@ function restoreStoredTasks(date) {
 }
 
 function handleProjectsInputs() {
-    //here goes code for handling the projects...
+        const element = document.getElementById('project-input');
+        console.log(element.value);
+        element.value = '';
 }
 
-export {showMyDay}
+export {showMyDay, handleProjectsInputs}
 
 
