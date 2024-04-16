@@ -6,8 +6,16 @@ const handleSidebarElements = () => {
     const addProject = document.querySelector('.project-container-header > .add-project-button');
     const projectDialog = document.getElementById('project-dialog');    
 
-    sidebarItems.addEventListener('click', () => {
-        showMyDay();
+    sidebarItems.addEventListener('click', (event) => {
+        const clickedItem = event.target;
+
+        if (clickedItem.classList[0] === 'my-day'){
+            console.log('my day was pressed');
+        }else if (clickedItem.classList[0] === 'week'){
+            console.log('the week element was pressed');
+        }else if (clickedItem.classList[0] === 'calendar'){
+            console.log('the calendar was pressed')
+        }
     });
 
     addProject.addEventListener('click', () => {
