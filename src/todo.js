@@ -114,10 +114,17 @@ function restoreStoredTasks(date) {
 
 }
 
-function handleProjectsInputs() {
-        const element = document.getElementById('project-input');
-        console.log(element.value);
-        element.value = '';
+function handleProjectsInputs(event) {
+
+    event.preventDefault();
+    
+    const projectInput = document.getElementById('project-input');
+    const projectName = projectInput.value.trim();
+    if (projectName) {
+        console.log(projectName);
+        projectInput.value = '';
+    }
+
 }
 
 export {showMyDay, handleProjectsInputs}

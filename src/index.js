@@ -31,27 +31,17 @@ const handleSidebarElements = () => {
 
     //handle new projects inputs 
 
-    submitProjectButton.addEventListener('click', (event) => {        
-        event.preventDefault();
+    submitProjectButton.addEventListener('click', (e) => {
+        handleProjectsInputs(e);
+        projectDialog.close();
+        }); 
 
-        const projectName = projectInput.value.trim();
-        if(projectName){
-            handleProjectsInputs();
+    projectInput.addEventListener('keydown', (e) => {        
+        if(e.key === 'Enter'){
+            handleProjectsInputs(e);
             projectDialog.close();
         }
-    })
-
-    projectInput.addEventListener('keydown', (event) => {        
-        if(event.key === 'Enter'){
-            event.preventDefault();
-
-            const projectName = projectInput.value.trim();
-            if(projectName){
-                handleProjectsInputs();
-                projectDialog.close();
-            }            
-        }
-    })
+    });
 }
 
 handleSidebarElements();
