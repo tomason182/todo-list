@@ -120,8 +120,12 @@ function handleProjectsInputs(event) {
     
     const projectInput = document.getElementById('project-input');
     const projectName = projectInput.value.trim();
+    const projectList = document.querySelector('.projects-list');
+    const projectElementList = document.createElement('li');
+
     if (projectName) {
-        console.log(projectName);
+        projectElementList.textContent = projectName;
+        projectList.appendChild(projectElementList);
         projectInput.value = '';
     }
 
