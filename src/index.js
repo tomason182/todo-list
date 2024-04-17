@@ -23,6 +23,7 @@ const handleSidebarElements = () => {
 
     addProject.addEventListener('click', () => {
         projectDialog.showModal();
+        handleProjectSelection();
     });
     
     cancelProjectDialog.addEventListener('click', () => {
@@ -42,6 +43,20 @@ const handleSidebarElements = () => {
             projectDialog.close();
         }
     });
+
+    handleProjectSelection();
+}
+
+const handleProjectSelection = () => {
+    const projectSelection = document.querySelector('.project-list');
+
+    if(projectSelection !== null) {
+        projectSelection.addEventListener('click', (event) => {
+            const clickedProject = event.target;
+    
+            console.log(clickedProject);
+        })
+    }
 }
 
 handleSidebarElements();
