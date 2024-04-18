@@ -23,7 +23,18 @@ const handleSidebarElements = () => {
 
     addProject.addEventListener('click', () => {
         projectDialog.showModal();
-        handleProjectSelection();
+
+        submitProjectButton.addEventListener('click', (e) => {
+            handleProjectsInputs(e);
+            projectDialog.close();
+            }); 
+    
+        projectInput.addEventListener('keydown', (e) => {        
+            if(e.key === 'Enter'){
+                handleProjectsInputs(e);
+                projectDialog.close();
+            }
+        });
     });
     
     cancelProjectDialog.addEventListener('click', () => {
@@ -31,20 +42,6 @@ const handleSidebarElements = () => {
     });
 
     //handle new projects inputs 
-
-    submitProjectButton.addEventListener('click', (e) => {
-        handleProjectsInputs(e);
-        projectDialog.close();
-        }); 
-
-    projectInput.addEventListener('keydown', (e) => {        
-        if(e.key === 'Enter'){
-            handleProjectsInputs(e);
-            projectDialog.close();
-        }
-    });
-
-    handleProjectSelection();
 }
 
 const handleProjectSelection = () => {
