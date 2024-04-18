@@ -124,7 +124,10 @@ function handleProjectsInputs(event) {
     if (projectName !== '') {
         const projectList = document.querySelector('.projects-list');
         const projectElementList = document.createElement('li');
-        projectElementList.textContent = projectName;
+        const projectContainer = document.createElement('div');
+        projectContainer.classList.add('new-project-container');
+        projectContainer.textContent = projectName;
+        projectElementList.appendChild(projectContainer);
         projectList.appendChild(projectElementList);
         projectInput.value = '';
     }

@@ -41,19 +41,19 @@ const handleSidebarElements = () => {
         projectDialog.close();
     });
 
+    handleProjectSelection();
+
     //handle new projects inputs 
 }
 
 const handleProjectSelection = () => {
-    const projectSelection = document.querySelector('.project-list');
+    const projectSelection = document.querySelector('.projects-list');
 
-    if(projectSelection !== null) {
-        projectSelection.addEventListener('click', (event) => {
-            const clickedProject = event.target;
+    projectSelection.addEventListener('click', (event) => {
+        const clickedProject = event.target;
     
-            console.log(clickedProject);
-        })
-    }
+        console.log(clickedProject);
+    })
 }
 
 handleSidebarElements();
