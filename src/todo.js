@@ -123,7 +123,7 @@ function handleProjectsInputs(event) {
     const projectList = document.querySelector('.projects-list');
     const projectElementList = document.createElement('li');
 
-    if (projectName) {
+    if (projectName !== '') {
         projectElementList.textContent = projectName;
         projectList.appendChild(projectElementList);
         projectInput.value = '';
