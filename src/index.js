@@ -12,11 +12,11 @@ const handleSidebarElements = () => {
   sidebarItems.addEventListener('click', (event) => {
     const clickedItem = event.target;
 
-    if (clickedItem.classList[0] === 'my-day'){
+    if (clickedItem.classList[0] === 'my-day') {
       console.log('my day was pressed');
-    }else if (clickedItem.classList[0] === 'week'){
+    }else if (clickedItem.classList[0] === 'week') {
       console.log('the week element was pressed');
-    }else if (clickedItem.classList[0] === 'calendar'){
+    }else if (clickedItem.classList[0] === 'calendar') {
       console.log('the calendar was pressed');
     }
   });
@@ -38,7 +38,7 @@ const handleSidebarElements = () => {
   }); 
 
   projectInput.addEventListener('keydown', (e) => {        
-    if(e.key === 'Enter'){
+    if(e.key === 'Enter') {
       handleProjectsInputs(e);
       projectDialog.close();
     }
