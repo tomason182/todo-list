@@ -21,42 +21,40 @@ const handleSidebarElements = () => {
     }
   });
 
-  addProject.addEventListener('click', () => {
-    projectDialog.showModal();
-    handleProjectSelection();
-  });
+    addProject.addEventListener('click', () => {
+        projectDialog.showModal();
+
+        submitProjectButton.addEventListener('click', (e) => {
+            handleProjectsInputs(e);
+            projectDialog.close();
+            }); 
+    
+        projectInput.addEventListener('keydown', (e) => {        
+            if(e.key === 'Enter'){
+                handleProjectsInputs(e);
+                projectDialog.close();
+            }
+        });
+    });
     
   cancelProjectDialog.addEventListener('click', () => {
     projectDialog.close();
   });
 
-  //handle new projects inputs 
+    handleProjectSelection();
 
-  submitProjectButton.addEventListener('click', (e) => {
-    handleProjectsInputs(e);
-    projectDialog.close();
-  }); 
-
-  projectInput.addEventListener('keydown', (e) => {        
-    if(e.key === 'Enter') {
-      handleProjectsInputs(e);
-      projectDialog.close();
-    }
-  });
-
-  handleProjectSelection();
+    //handle new projects inputs 
 }
 
 const handleProjectSelection = () => {
-  const projectSelection = document.querySelector('.project-list');
+    const projectSelection = document.querySelector('.projects-list');
 
-  if(projectSelection !== null) {
     projectSelection.addEventListener('click', (event) => {
-      const clickedProject = event.target;
+        const clickedProject = event.target;
     
-      console.log(clickedProject);
+        console.log(clickedProject);
     })
-  }
+
 }
 
 handleSidebarElements();
