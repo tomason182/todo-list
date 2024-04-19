@@ -94,8 +94,8 @@ function handleUserInput() {
                 liElement.textContent = newTask.title;
                 taskList.appendChild(liElement);
                 element.value = '';
-            };
-        };
+            }
+        }
     });
 }
 
