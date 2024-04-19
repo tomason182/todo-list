@@ -1,3 +1,18 @@
+function setProjectInLocalStorage(projectName) {
+    if(!storageAvailable("localStorage")) {
+        alert("Local Storage is not available or full");
+        return false;
+    }
+    try {
+        localStorage.setItem(projectName, []);
+        return true;
+    }catch(error) {
+        console.error("Error storing task in Local Storage: ", error);
+        alert("Error storing task. Check console for more details");
+        return false;
+    }
+}
+
 function setTaskInLocalStorage(task) {
     if(!storageAvailable("localStorage")) {
         alert("Local Storage is not available or full");
@@ -67,4 +82,4 @@ function storageAvailable(type) {
     }
 }
 
-export {setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage}
+export {setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage, setProjectInLocalStorage}
