@@ -1,3 +1,20 @@
+function setProjectInLocalStorage(projectName) {
+    if(!storageAvailable("localStorage")) {
+        alert("Local Storage is not available or full");
+        return false;
+    }
+
+    try {
+        let taskList = [];
+        localStorage.setItem(projectName, taskList);
+        return true;
+    }catch(error) {
+        console.error("Error storing project in Local Storage: ", error);
+        alert("Error storing project in Local Storage. Check console for details");
+        return false;
+    }
+}
+
 function setTaskInLocalStorage(task) {
     if(!storageAvailable("localStorage")) {
         alert("Local Storage is not available or full");
