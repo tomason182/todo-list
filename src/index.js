@@ -5,9 +5,6 @@ const handleSidebarElements = () => {
   const sidebarItems = document.querySelector('.content > .sidebar-container > .sidebar-items');
   const addProject = document.querySelector('.project-container-header > .add-project-button');
   const projectDialog = document.getElementById('project-dialog');
-  const cancelProjectDialog = document.getElementById('cancel-add-project-dialog');
-  const submitProjectButton = document.getElementById('project-submit');
-  const projectInput = document.getElementById('project-input');
 
   sidebarItems.addEventListener('click', (event) => {
     const clickedItem = event.target;
@@ -22,33 +19,35 @@ const handleSidebarElements = () => {
   });
 
   addProject.addEventListener('click', () => {
+    const projectInput = document.getElementById('project-input');
+    const cancelProjectDialog = document.getElementById('cancel-add-project-dialog');
+    const submitProjectButton = document.getElementById('project-submit');
+
     projectDialog.showModal();
-    handleProjectSelection();
-  });
     
-  cancelProjectDialog.addEventListener('click', () => {
-    projectDialog.close();
-  });
-
-  //handle new projects inputs 
-
-  submitProjectButton.addEventListener('click', (e) => {
-    handleProjectsInputs(e);
-    projectDialog.close();
-  }); 
-
-  projectInput.addEventListener('keydown', (e) => {        
-    if(e.key === 'Enter') {
+    cancelProjectDialog.addEventListener('click', () => {
+      projectDialog.close();
+    });    
+    
+    submitProjectButton.addEventListener('click', (e) => {
       handleProjectsInputs(e);
       projectDialog.close();
-    }
+    });
+
+    projectInput.addEventListener('keydown', (e) => {        
+      if(e.key === 'Enter') {
+        handleProjectsInputs(e);
+        projectDialog.close();
+      }
+    });
+
   });
 
   handleProjectSelection();
 }
 
 const handleProjectSelection = () => {
-  const projectSelection = document.querySelector('.project-list');
+  const projectSelection = document.querySelector('.projects-list');
 
   if(projectSelection !== null) {
     projectSelection.addEventListener('click', (event) => {
