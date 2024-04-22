@@ -18,6 +18,7 @@ const handleSidebarElements = () => {
     }
   });
 
+<<<<<<< HEAD
   addProject.addEventListener('click', () => {
     const projectInput = document.getElementById('project-input');
     const cancelProjectDialog = document.getElementById('cancel-add-project-dialog');
@@ -48,14 +49,13 @@ const handleSidebarElements = () => {
 
 const handleProjectSelection = () => {
   const projectSelection = document.querySelector('.projects-list');
-
-  if(projectSelection !== null) {
+  
     projectSelection.addEventListener('click', (event) => {
-      const clickedProject = event.target;
+        const clickedProject = event.target;
     
-      console.log(clickedProject);
+        console.log(clickedProject);
     })
-  }
+
 }
 
 handleSidebarElements();
