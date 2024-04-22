@@ -21,7 +21,19 @@ function setTaskInLocalStorage(task) {
         return false;
     }
     try {
-        localStorage.setItem(task._projectName, JSON.stringify(task));
+        const projectName = task.projectName;
+        console.log(projectName)
+
+        //taskList is not an array. Needed to be fix
+
+        let taskList = localStorage.getItem(projectName)
+
+        if (taskList.length === 0) {
+            taskList = [];
+        }
+
+        taskList.push(JSON.stringify(task));
+        localStorage.setItem(projectName, taskList)
         return true;
     } catch(error) {
         console.error("Error storing task in Local Storage: ", error);
