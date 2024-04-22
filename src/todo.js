@@ -1,5 +1,6 @@
 import Task from "./factory";
 import { reCreateTask, retrieveStoredTasks } from "./factory";
+import { setProjectInLocalStorage } from "./local-storage";
 
 const mainContainer  = document.getElementById('main-container');
 
@@ -121,6 +122,8 @@ function handleProjectsInputs(event) {
     const projectInput = document.getElementById('project-input');
     const projectName = projectInput.value.trim();
 
+    // There is a bug when duplicating the project name. Needed to be fix
+
     if (projectName !== '') {
         const projectList = document.querySelector('.projects-list');
         const projectElementList = document.createElement('li');
@@ -130,6 +133,8 @@ function handleProjectsInputs(event) {
         projectElementList.appendChild(projectContainer);
         projectList.appendChild(projectElementList);
         projectInput.value = '';
+        setProjectInLocalStorage(projectName);
+
     }
 
 }
