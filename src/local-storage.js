@@ -20,9 +20,8 @@ function setTaskInLocalStorage(task) {
         alert("Local Storage is not available or full");
         return false;
     }
-
     try {
-        localStorage.setItem(task._key, JSON.stringify(task));
+        localStorage.setItem(task._projectName, JSON.stringify(task));
         return true;
     } catch(error) {
         console.error("Error storing task in Local Storage: ", error);
@@ -84,4 +83,4 @@ function storageAvailable(type) {
     }
 }
 
-export {setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage}
+export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage}
