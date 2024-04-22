@@ -1,5 +1,5 @@
 import Task from "./factory";
-import { reCreateTask, retrieveStoredTasks } from "./factory";
+import { reCreateTask, retrieveStoredTasks} from "./factory";
 import { setProjectInLocalStorage } from "./local-storage";
 
 const mainContainer  = document.getElementById('main-container');
@@ -62,7 +62,7 @@ function showMyDay(){
     //appends the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
 
-    restoreStoredTasks(new Date());
+    /* restoreStoredTasks(new Date()); */
     handleUserInput();
 }
 
