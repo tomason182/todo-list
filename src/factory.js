@@ -72,25 +72,4 @@ function reCreateTask(key) {
     return new Task(restoredObj._title, restoredObj._description, restoredObj._dueDate, restoredObj._priority, restoredObj._status, restoredObj._key);
 }
 
-function retrieveStoredTasks(date, month){
-    const numberOfTaskInStorage = localStorage.length;
-    const tasks = [];
-
-    if(!numberOfTaskInStorage){
-        return tasks;
-    }else{
-        for (let i = 0; i < numberOfTaskInStorage; i++){
-            const taskKey = localStorage.key(i);
-            const storedTask = getTaskFromLocalStorage(taskKey);
-            if (date === new Date(storedTask._dueDate).getDate() && month === new Date(storedTask._dueDate).getMonth()) {
-                tasks.push(storedTask);
-            }
-        }
-    
-        return tasks;
-    }
-
-    
-}
-
-export {reCreateTask, retrieveStoredTasks};
+export {reCreateTask};
