@@ -1,5 +1,6 @@
 import './styles.css';
 import { showMyDay, handleProjectsInputs } from './todo';
+import { setProjectInLocalStorage } from './local-storage';
 
 const handleSidebarElements = () => {
   const sidebarItems = document.querySelector('.content > .sidebar-container > .sidebar-items');
@@ -55,6 +56,23 @@ const handleProjectSelection = () => {
         console.log(clickedProject);
     })
 
+}
+
+if (localStorage.length === 0) {
+  setProjectInLocalStorage("default");
+}else{
+  let defaultKey = false;
+  const keys = Object.keys(localStorage);
+
+  keys.forEach((key) => {
+    if(localStorage.key(key) === "default"){
+      defaultKey = true;
+    }    
+  });
+
+  if (defaultKey === false) {
+    setProjectInLocalStorage("default");
+  }
 }
 
 handleSidebarElements();
