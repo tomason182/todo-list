@@ -56,6 +56,21 @@ function removeTaskFromLocalStorage(key) {
     }
 }
 
+function restoreStoredTasks(date) {
+    const day = date.getDate();
+    const month = date.getMonth();
+    const taskList = retrieveStoredTasks(day, month);
+
+    taskList.forEach((task) => {
+        const taskObj = reCreateTask(task._key);
+        const taskList = document.querySelector('.daily-task-list');
+        const liElement = document.createElement('li');
+        liElement.textContent = taskObj.title;
+        taskList.appendChild(liElement);
+    });
+
+}
+
 function storageAvailable(type) {
     let storage;
     try {
