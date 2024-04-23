@@ -1,3 +1,5 @@
+import Task from "./factory";
+
 function setProjectInLocalStorage(projectName) {
     if(!storageAvailable("localStorage")) {
         alert("Local Storage is not available or full");
@@ -133,7 +135,7 @@ function storageAvailable(type) {
 
 function recreateTaskObject(projectName) {
     const restoredObj = getTaskFromLocalStorage(projectName);
-    return new Task(restoredObj._title, restoredObj._description, restoredObj._dueDate, restoredObj._priority, restoredObj._status, restoredObj._projectName);
+    return new Task(restoredObj._title, restoredObj._description, restoredObj._priority, restoredObj._status, restoredObj._dueDate,restoredObj._projectName);
 }
 
 export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage} 
