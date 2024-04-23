@@ -85,25 +85,25 @@ function retrieveStoredTasks() {
     });
 
     return restoredTasksObject;
-
 }
 
-function retrieveTasks(date, month){
-    const numberOfTaskInStorage = localStorage.length;
-    const tasks = [];
+function recoverTaskByDate(date){
+    const day = date.getDate();
+    const month = date.getMonth();
 
-    if(!numberOfTaskInStorage){
-        return tasks;
-    }else{
-        for (let i = 0; i < numberOfTaskInStorage; i++){
-            const taskKey = localStorage.key(i);
-            const storedTask = getTaskFromLocalStorage(taskKey);
-            if (date === new Date(storedTask._dueDate).getDate() && month === new Date(storedTask._dueDate).getMonth()) {
-                tasks.push(storedTask);
+    const tasksList = retrieveStoredTasks();
+    const tasksByDate = new Set();
+
+    if (tasksList.length !== 0) {
+        tasksList.forEach((task) => {
+            const taskDate = task.dueDate;
+            if(taskDate.getDate() === day && taskDate.getMonth() === month) {
+                tasksByDate.add(task);
             }
-        }    
-        return tasks;
-    }    
+        })
+    }
+    
+    return tasksByDate;    
 }
 
 function storageAvailable(type) {
