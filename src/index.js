@@ -66,7 +66,8 @@ if (localStorage.length === 0) {
   const keys = Object.keys(localStorage);
 
   keys.forEach((key) => {
-    if(localStorage.key(key) === "default"){
+    if(key === "default"){
+
       defaultKey = true;
     }    
   });
