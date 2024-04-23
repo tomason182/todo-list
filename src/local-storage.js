@@ -76,15 +76,14 @@ function retrieveStoredTasks() {
 
     storageKeys.forEach((key) => {
         const taskList = JSON.parse(localStorage[key]);
-        console.log(typeof taskList);
+
         if(taskList !== undefined){
-            taskList.forEach((task) => {
-                const taskObject = recreateTaskObject(task);
+            taskList.forEach((task) => {          
+                const taskObject = new Task (task._title, task._description, task._priority, task._status, task._projectName, task._dueDate);           
                 restoredTasksObject.add(taskObject)
             })
         }
     });
-
     return restoredTasksObject;
 }
 
@@ -95,13 +94,12 @@ function recoverTaskByDate(day, month){
 
     if (tasksList.length !== 0) {
         tasksList.forEach((task) => {
-            const taskDate = task.dueDate;
-            if(taskDate.getDate() === day && taskDate.getMonth() === month) {
+            const taskDate = task.dueDate;            
+            if(taskDate.getDate() === day && taskDate.getMonth() === (month - 1)) {
                 tasksByDate.add(task);
             }
         })
     }
-
     return tasksByDate;    
 }
 
@@ -130,11 +128,6 @@ function storageAvailable(type) {
             storage.length !== 0
         );
     }
-}
-
-function recreateTaskObject(projectName) {
-    const restoredObj = getTaskFromLocalStorage(projectName);
-    return new Task(restoredObj._title, restoredObj._description, restoredObj._priority, restoredObj._status, restoredObj._dueDate,restoredObj._projectName);
 }
 
 export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage, recoverTaskByDate} 
