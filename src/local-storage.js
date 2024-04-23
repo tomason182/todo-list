@@ -102,7 +102,7 @@ function recoverTaskByDate(date){
             }
         })
     }
-    
+
     return tasksByDate;    
 }
 
@@ -138,4 +138,4 @@ function recreateTaskObject(projectName) {
     return new Task(restoredObj._title, restoredObj._description, restoredObj._priority, restoredObj._status, restoredObj._dueDate,restoredObj._projectName);
 }
 
-export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage} 
+export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage, recoverTaskByDate} 
