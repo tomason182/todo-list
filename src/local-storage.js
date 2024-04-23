@@ -6,7 +6,7 @@ function setProjectInLocalStorage(projectName) {
         return false;
     }
     try {
-        const taskList = [];
+        const taskList = [];        
         localStorage.setItem(projectName, JSON.stringify(taskList));
         return true;
     }catch(error) {
@@ -75,8 +75,9 @@ function retrieveStoredTasks() {
     let restoredTasksObject = new Set;
 
     storageKeys.forEach((key) => {
-        const taskList = localStorage[key];
-        if(taskList.length > 0){
+        const taskList = JSON.parse(localStorage[key]);
+        console.log(typeof taskList);
+        if(taskList !== undefined){
             taskList.forEach((task) => {
                 const taskObject = recreateTaskObject(task);
                 restoredTasksObject.add(taskObject)
@@ -87,9 +88,7 @@ function retrieveStoredTasks() {
     return restoredTasksObject;
 }
 
-function recoverTaskByDate(date){
-    const day = date.getDate();
-    const month = date.getMonth();
+function recoverTaskByDate(day, month){
 
     const tasksList = retrieveStoredTasks();
     const tasksByDate = new Set();
