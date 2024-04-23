@@ -66,10 +66,3 @@ export default class Task {
         removeTaskFromLocalStorage(this._key);
     }
 }
-
-function reCreateTask(key) {
-    const restoredObj = getTaskFromLocalStorage(key);
-    return new Task(restoredObj._title, restoredObj._description, restoredObj._dueDate, restoredObj._priority, restoredObj._status, restoredObj._key);
-}
-
-export {reCreateTask};
