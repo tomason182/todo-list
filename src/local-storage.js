@@ -24,14 +24,14 @@ function setTaskInLocalStorage(task) {
 
         //taskList is not an array. Needed to be fix
 
-        let taskList = localStorage.getItem(projectName)
+        let taskList = JSON.parse(localStorage.getItem(projectName));
 
-        if (taskList.length === 0) {
+        if (taskList === null) {
             taskList = [];
         }
 
-        taskList.push(JSON.stringify(task));
-        localStorage.setItem(projectName, taskList)
+        taskList.push(task);
+        localStorage.setItem(projectName, JSON.stringify(taskList));
         return true;
     } catch(error) {
         console.error("Error storing task in Local Storage: ", error);
