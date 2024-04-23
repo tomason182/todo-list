@@ -131,9 +131,9 @@ function storageAvailable(type) {
     }
 }
 
-function reCreateTask(projectName) {
-    const restoredObj = getTaskFromLocalStorage(key);
-    return new Task(restoredObj._title, restoredObj._description, restoredObj._dueDate, restoredObj._priority, restoredObj._status, restoredObj._key);
+function recreateTaskObject(projectName) {
+    const restoredObj = getTaskFromLocalStorage(projectName);
+    return new Task(restoredObj._title, restoredObj._description, restoredObj._dueDate, restoredObj._priority, restoredObj._status, restoredObj._projectName);
 }
 
 export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage}
