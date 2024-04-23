@@ -1,5 +1,5 @@
 import Task from "./factory";
-import { reCreateTask, retrieveStoredTasks} from "./factory";
+import { displayStoredTask } from "./handleTasks";
 import { setProjectInLocalStorage } from "./local-storage";
 
 const mainContainer  = document.getElementById('main-container');
@@ -34,11 +34,11 @@ function showMyDay(){
     dayTitle.textContent = 'My Day';
 
     const todayDate = document.createElement('h2');
-    todayDate.classList.add('date');
+    todayDate.classList.add('formatted-date');
     todayDate.textContent = dates().getToday()[0];
 
     dayTitleContainer.appendChild(dayTitle);
-    dayTitleContainer.appendChild(todayDate)
+    dayTitleContainer.appendChild(todayDate);
     
     //creates a list of tasks and append it to dayListContainer
     const dailyTaskList = createElementWithClass('ul', 'daily-task-list');
@@ -64,6 +64,7 @@ function showMyDay(){
 
     /* restoreStoredTasks(new Date()); */
     handleUserInput();
+    displayStoredTask();
 }
 
 function dates() {
@@ -75,7 +76,7 @@ function dates() {
 
         const formattedDay = String(day).padStart(2,'0');
         const formattedMonth = String(month).padStart(2,'0');
-        return [`${formattedDay}.${formattedMonth}`, day, month];
+        return [`${formattedDay}.${formattedMonth}`, today];
     }
     
     return {getToday};
