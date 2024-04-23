@@ -13,9 +13,6 @@ function displayStoredTask() {
             const dayToInt = parseInt(day);
             const monthToInt = parseInt(month);
 
-            console.log(dayToInt);
-            console.log(monthToInt);
-
             const taskByDay = recoverTaskByDate(dayToInt, monthToInt);
     
             taskByDay.forEach((task) => {
