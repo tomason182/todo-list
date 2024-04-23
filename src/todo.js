@@ -34,7 +34,7 @@ function showMyDay(){
     dayTitle.textContent = 'My Day';
 
     const todayDate = document.createElement('h2');
-    todayDate.classList.add('today-date');
+    todayDate.classList.add('date');
     todayDate.textContent = dates().getToday()[0];
 
     dayTitleContainer.appendChild(dayTitle);
