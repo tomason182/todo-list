@@ -1,5 +1,6 @@
 import Task from "./factory";
-import { reCreateTask, retrieveStoredTasks } from "./factory";
+import { reCreateTask, retrieveStoredTasks} from "./factory";
+import { setProjectInLocalStorage } from "./local-storage";
 
 const mainContainer  = document.getElementById('main-container');
 
@@ -61,7 +62,7 @@ function showMyDay(){
     //appends the dayContainer to mainContainer
     mainContainer.appendChild(dayContainer);
 
-    restoreStoredTasks(new Date());
+    /* restoreStoredTasks(new Date()); */
     handleUserInput();
 }
 
@@ -99,27 +100,14 @@ function handleUserInput() {
     });
 }
 
-function restoreStoredTasks(date) {
-    const day = date.getDate();
-    const month = date.getMonth();
-    const taskList = retrieveStoredTasks(day, month);
-
-    taskList.forEach((task) => {
-        const taskObj = reCreateTask(task._key);
-        const taskList = document.querySelector('.daily-task-list');
-        const liElement = document.createElement('li');
-        liElement.textContent = taskObj.title;
-        taskList.appendChild(liElement);
-    });
-
-}
-
 function handleProjectsInputs(event) {
 
     event.preventDefault();
     
     const projectInput = document.getElementById('project-input');
     const projectName = projectInput.value.trim();
+
+    // There is a bug when duplicating the project name. Needed to be fix
 
     if (projectName !== '') {
         const projectList = document.querySelector('.projects-list');
@@ -130,6 +118,8 @@ function handleProjectsInputs(event) {
         projectElementList.appendChild(projectContainer);
         projectList.appendChild(projectElementList);
         projectInput.value = '';
+        setProjectInLocalStorage(projectName);
+
     }
 
 }

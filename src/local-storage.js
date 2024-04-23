@@ -18,9 +18,20 @@ function setTaskInLocalStorage(task) {
         alert("Local Storage is not available or full");
         return false;
     }
-
     try {
-        localStorage.setItem(task._key, JSON.stringify(task));
+        const projectName = task.projectName;
+        console.log(projectName)
+
+        //taskList is not an array. Needed to be fix
+
+        let taskList = localStorage.getItem(projectName)
+
+        if (taskList.length === 0) {
+            taskList = [];
+        }
+
+        taskList.push(JSON.stringify(task));
+        localStorage.setItem(projectName, taskList)
         return true;
     } catch(error) {
         console.error("Error storing task in Local Storage: ", error);
@@ -55,6 +66,39 @@ function removeTaskFromLocalStorage(key) {
     }
 }
 
+function restoreStoredTasks(date) {
+    const day = date.getDate();
+    const month = date.getMonth();
+    const taskList = retrieveStoredTasks(day, month);
+
+    taskList.forEach((task) => {
+        const taskObj = reCreateTask(task._key);
+        const taskList = document.querySelector('.daily-task-list');
+        const liElement = document.createElement('li');
+        liElement.textContent = taskObj.title;
+        taskList.appendChild(liElement);
+    });
+
+}
+
+function retrieveStoredTasks(date, month){
+    const numberOfTaskInStorage = localStorage.length;
+    const tasks = [];
+
+    if(!numberOfTaskInStorage){
+        return tasks;
+    }else{
+        for (let i = 0; i < numberOfTaskInStorage; i++){
+            const taskKey = localStorage.key(i);
+            const storedTask = getTaskFromLocalStorage(taskKey);
+            if (date === new Date(storedTask._dueDate).getDate() && month === new Date(storedTask._dueDate).getMonth()) {
+                tasks.push(storedTask);
+            }
+        }    
+        return tasks;
+    }    
+}
+
 function storageAvailable(type) {
     let storage;
     try {
@@ -82,4 +126,4 @@ function storageAvailable(type) {
     }
 }
 
-export {setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage, setProjectInLocalStorage}
+export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage}

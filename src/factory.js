@@ -1,13 +1,13 @@
 import { setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage } from "./local-storage";
 
 export default class Task {
-    constructor(title, description, dueDate = new Date(), priority, status, key = generateStorageKey()){
+    constructor(title, description, priority, status, projectName = "default", dueDate = new Date()){
         this._title = title;
         this._description = description;
         this._dueDate = dueDate;
         this._priority = priority;
         this._status = status;
-        this._key = key;
+        this._projectName = projectName;
     }
 
     //getter and setter for title
@@ -50,6 +50,14 @@ export default class Task {
         this._status = value;
     }
 
+    // Getter and setter for project name
+    get projectName() {
+        return this._projectName;
+    }
+    set projectName(value) {
+        this._projectName = value;
+    }
+
     storeTask() {
         setTaskInLocalStorage(this);
     }
@@ -59,59 +67,9 @@ export default class Task {
     }
 }
 
-function generateStorageKey(){
-
-    const localStorageKeys = new Set();
-
-    try {
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            localStorageKeys.add(key);
-        }
-    } catch(error) {
-        console.error("Error accessing Local Storage", error);
-        return 'default-key';
-    }
-
-    const maxKeys = 999;
-
-    if (localStorage.length >= maxKeys) {
-        alert("Maximum amount of tasks reached");
-        return null;
-    }
-
-    while (true) {
-        const keyGenerator = Math.floor(Math.random()* 10000);
-        if (!localStorageKeys.has(keyGenerator.toString())) {
-            return keyGenerator.toString();
-        }
-    }
-}
-
 function reCreateTask(key) {
     const restoredObj = getTaskFromLocalStorage(key);
     return new Task(restoredObj._title, restoredObj._description, restoredObj._dueDate, restoredObj._priority, restoredObj._status, restoredObj._key);
 }
 
-function retrieveStoredTasks(date, month){
-    const numberOfTaskInStorage = localStorage.length;
-    const tasks = [];
-
-    if(!numberOfTaskInStorage){
-        return tasks;
-    }else{
-        for (let i = 0; i < numberOfTaskInStorage; i++){
-            const taskKey = localStorage.key(i);
-            const storedTask = getTaskFromLocalStorage(taskKey);
-            if (date === new Date(storedTask._dueDate).getDate() && month === new Date(storedTask._dueDate).getMonth()) {
-                tasks.push(storedTask);
-            }
-        }
-    
-        return tasks;
-    }
-
-    
-}
-
-export {reCreateTask, retrieveStoredTasks};
+export {reCreateTask};
