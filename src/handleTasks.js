@@ -17,10 +17,12 @@ function displayStoredTask() {
     
             taskByDay.forEach((task) => {
                 const tasksContainer = document.querySelector('.task-container');
-                const taskElement = document.createElement('p');
-                taskElement.classList.add('task');
+                const taskList = document.createElement('ul');
+                taskList.classList.add('daily-task-list');
+                const taskElement = document.createElement('li');
                 taskElement.textContent = task.title;
-                tasksContainer.appendChild(taskElement);
+                taskList.appendChild(taskElement);
+                tasksContainer.appendChild(taskList);
             });
         });
     }    
