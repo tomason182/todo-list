@@ -25,7 +25,7 @@ function showMyDay(){
     
     //create three container that goes inside dayContainer with class name
     const dayTitleContainer = createElementWithClass('div', 'day-title-container');
-    const dayListContainer = createElementWithClass('div', 'day-list-container');
+    const dayListContainer = createElementWithClass('div', 'task-container');
     const dayInputContainer = createElementWithClass('div', 'day-input-container');
 
     //create dayTitle and todayDate and append them to dayTitleContainer
