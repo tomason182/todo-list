@@ -41,18 +41,18 @@ function setTaskInLocalStorage(task) {
     }
 }
 
-function getTaskFromLocalStorage(key) {
+function getTaskFromLocalStorage(projectName) {
     try {
-        const storedTask = localStorage.getItem(key);
-        if (storedTask) {
+        const storedTask = localStorage.getItem(projectName);
+        if (storedTask.length > 0 && storedTask !== null) {
             return JSON.parse(storedTask) // parse back to object
         } else {
-            return null;
+            return false;
         }
     } catch(error) {
         console.error("Error retrieving task from Local Storage: ", error);
         alert("Error retrieving task. Check console for more details");
-        return null;
+        return false;
     }
 }
 
@@ -71,14 +71,19 @@ function restoreStoredTasks(date) {
     const day = date.getDate();
     const month = date.getMonth();
     
-     const storageKeys = Object.keys(localStorage);
+    const storageKeys = Object.keys(localStorage);     
+    
+    let restoredTasksObject = [];
 
-     storageKeys.forEach((key) => {
-
-     })
-
-
-
+    storageKeys.forEach((key) => {
+        const taskList = localStorage[key];
+        if(taskList.length > 0){
+            taskList.forEach((task) => {
+                const taskObject = recreateTaskObject(task);
+                restoredTasksObject.push(taskObject)
+            })
+        }
+     });
 }
 
 function retrieveStoredTasks(date, month){
