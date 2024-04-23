@@ -67,26 +67,26 @@ function removeTaskFromLocalStorage(key) {
     }
 }
 
-function restoreStoredTasks(date) {
-    const day = date.getDate();
-    const month = date.getMonth();
-    
+function retrieveStoredTasks() {    
     const storageKeys = Object.keys(localStorage);     
     
-    let restoredTasksObject = [];
+    let restoredTasksObject = new Set;
 
     storageKeys.forEach((key) => {
         const taskList = localStorage[key];
         if(taskList.length > 0){
             taskList.forEach((task) => {
                 const taskObject = recreateTaskObject(task);
-                restoredTasksObject.push(taskObject)
+                restoredTasksObject.add(taskObject)
             })
         }
-     });
+    });
+
+    return restoredTasksObject;
+
 }
 
-function retrieveStoredTasks(date, month){
+function retrieveTasks(date, month){
     const numberOfTaskInStorage = localStorage.length;
     const tasks = [];
 
@@ -136,4 +136,4 @@ function recreateTaskObject(projectName) {
     return new Task(restoredObj._title, restoredObj._description, restoredObj._dueDate, restoredObj._priority, restoredObj._status, restoredObj._projectName);
 }
 
-export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage}
+export {setProjectInLocalStorage, setTaskInLocalStorage, getTaskFromLocalStorage, removeTaskFromLocalStorage} 
