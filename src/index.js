@@ -55,8 +55,9 @@ const handleProjectSelection = () => {
     
         console.log(clickedProject);
     })
-
 }
+
+// Creates a default project if no projects have been created yet
 
 if (localStorage.length === 0) {
   setProjectInLocalStorage("default");
