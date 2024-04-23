@@ -67,6 +67,10 @@ function showMyDay(){
     displayStoredTask();
 }
 
+function ShowThisWeek() {
+    // This function would allow to display the hole week in the correspond container
+}
+
 function dates() {
 
     const getToday = () => {
