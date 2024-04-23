@@ -46,9 +46,9 @@ function setTaskInLocalStorage(task) {
 function getTaskFromLocalStorage(projectName) {
     try {
         const storedTask = localStorage.getItem(projectName);
-        if (storedTask.length > 0 && storedTask !== null) {
+        if (storedTask !== null) {
             return JSON.parse(storedTask) // parse back to object
-        } else {
+        }else{
             return false;
         }
     } catch(error) {
