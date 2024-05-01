@@ -77,11 +77,11 @@ function showThisWeek() {
     mainContainer.innerHTML = "";
 
     const weekContainer = createElementWithClass("div", "week-container");
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
     for (let i = 0; i < daysOfWeek.length; i ++) {
         let dayContainer = createElementWithClass("div", "day-container");
-        dayContainer.classList.add(`${i}`);
+        dayContainer.classList.add(daysOfWeek[i]);
         weekContainer.appendChild(dayContainer);
     }
 
@@ -90,7 +90,7 @@ function showThisWeek() {
 
 function dates() {
 
-    const getToday = () => {
+    const getToday = function getTodaysDate () {
         const today = new Date();
         const day = today.getDate();
         const month = today.getMonth() + 1; // Month are zero-indexed
@@ -98,6 +98,11 @@ function dates() {
         const formattedDay = String(day).padStart(2,'0');
         const formattedMonth = String(month).padStart(2,'0');
         return [`${formattedDay}.${formattedMonth}`, today];
+    }
+
+    const getWeek = function getThisWeekDays () {
+        const today = getToday();
+
     }
     
     return {getToday};
