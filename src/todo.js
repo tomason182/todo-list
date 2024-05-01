@@ -102,6 +102,21 @@ function dates() {
 
     const getWeek = function getThisWeekDays () {
         const today = getToday();
+        const todaysDay = today[1].getDay();
+        const todaysDate = today[1].getDate();
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday"];
+
+        daysOfWeek.forEach((day, index) => {
+            if(todaysDay === index) {
+                const todaysDayName = day;
+            }else if(todaysDay < i) {
+                const currentDate = todaysDate + i;
+            }else{
+                const currentDate = todaysDate - i;
+            }
+        }
+            
+        )
 
     }
     
