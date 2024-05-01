@@ -89,9 +89,9 @@ function showThisWeek() {
 }
 
 function dates() {
+    const today = new Date();
 
-    const getToday = function getTodaysDate () {
-        const today = new Date();
+    const getToday = function getTodaysDate () {        
         const day = today.getDate();
         const month = today.getMonth() + 1; // Month are zero-indexed
 
@@ -101,23 +101,55 @@ function dates() {
     }
 
     const getWeek = function getThisWeekDays () {
-        const today = getToday();
-        const todaysDay = today[1].getDay();
-        const todaysDate = today[1].getDate();
-        const daysOfWeek = ["Sunday", "Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday"];
+        let days = new Date();
 
-        daysOfWeek.forEach((day, index) => {
-            if(todaysDay === index) {
-                const todaysDayName = day;
-            }else if(todaysDay < i) {
-                const currentDate = todaysDate + i;
+        let week = [
+            {
+                "day": "Sunday",
+                "date": null,
+                "index": 0
+            },
+            {
+                "day": "Monday",
+                "date": null,
+                "index": 1
+            },
+            {
+                "day": "Tuesday",
+                "date": null,
+                "index": 2
+            },
+            {
+                "day": "Wednesday",
+                "date": null,
+                "index": 3
+            },
+            {
+                "day": "Thursday",
+                "date": null,
+                "index": 4
+            },
+            {
+                "day": "Friday",
+                "date": null,
+                "index": 5
+            },
+            {
+                "day": "Saturday",
+                "date": null,
+                "index": 6
+            },            
+        ];
+
+        week.forEach((obj) => {
+            if(obj.index === today.getDay()) {
+                obj.date = today;
+            }else if(obj.index < today.getDay()) {
+                obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (today.getDay() - obj.index));
             }else{
-                const currentDate = todaysDate - i;
+                obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (obj.index - today.getDay()));
             }
-        }
-            
-        )
-
+        });
     }
     
     return {getToday};
