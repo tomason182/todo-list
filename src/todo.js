@@ -101,42 +101,55 @@ function dates() {
     }
 
     const getWeek = function getThisWeekDays () {
-        let days = new Date();
 
         let week = [
             {
-                "day": "Sunday",
+                "dayName": "Sunday",
                 "date": null,
+                "formattedDay": null,
+                "formattedMonth": null,
                 "index": 0
             },
             {
                 "day": "Monday",
                 "date": null,
+                "formattedDay": null,
+                "formattedMonth": null,
                 "index": 1
             },
             {
                 "day": "Tuesday",
                 "date": null,
+                "formattedDay": null,
+                "formattedMonth": null,
                 "index": 2
             },
             {
                 "day": "Wednesday",
                 "date": null,
+                "formattedDay": null,
+                "formattedMonth": null,
                 "index": 3
             },
             {
                 "day": "Thursday",
                 "date": null,
+                "formattedDay": null,
+                "formattedMonth": null,
                 "index": 4
             },
             {
                 "day": "Friday",
                 "date": null,
+                "formattedDay": null,
+                "formattedMonth": null,
                 "index": 5
             },
             {
                 "day": "Saturday",
                 "date": null,
+                "formattedDay": null,
+                "formattedMonth": null,
                 "index": 6
             },            
         ];
@@ -146,6 +159,7 @@ function dates() {
                 obj.date = today;
             }else if(obj.index < today.getDay()) {
                 obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (today.getDay() - obj.index));
+                obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
             }else{
                 obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (obj.index - today.getDay()));
             }
