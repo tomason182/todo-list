@@ -67,7 +67,7 @@ function showMyDay(){
     displayStoredTask();
 }
 
-function ShowThisWeek() {
+function showThisWeek() {
     
     if(!mainContainer) {
         console.log('Main Container element not found');
@@ -76,13 +76,16 @@ function ShowThisWeek() {
 
     mainContainer.innerHTML = "";
 
-    const weekContainer = document.createElementWithClass("div", "week-container");
+    const weekContainer = createElementWithClass("div", "week-container");
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     for (let i = 0; i < daysOfWeek.length; i ++) {
-        let dayContainer = document.createElementWithClass("div", `day-container ${i}`);
+        let dayContainer = createElementWithClass("div", "day-container");
+        dayContainer.classList.add(`${i}`);
         weekContainer.appendChild(dayContainer);
     }
+
+    mainContainer.appendChild(weekContainer);
 }
 
 function dates() {
@@ -143,6 +146,6 @@ function handleProjectsInputs(event) {
 
 }
 
-export {showMyDay, handleProjectsInputs}
+export {showMyDay, showThisWeek ,handleProjectsInputs}
 
 
