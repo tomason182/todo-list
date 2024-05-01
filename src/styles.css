@@ -64,6 +64,21 @@ header {
     border: 1px solid black; 
 }
 
+.week-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.week-container > .day-container {   
+    width: 15vw;
+    min-width: 150px;
+    height: 25vh;
+    border: 1px solid red;
+    margin: 1rem;
+}
+
 .day-title-container {
     display: flex;
     justify-content:space-between;
