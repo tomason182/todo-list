@@ -15,7 +15,7 @@ function showMyDay(){
     //check if main container exists before proceeding
     if(!mainContainer) {
         console.log('Main container element not found');
-        return;
+        return false;
     }
 
     // clean the main container
@@ -68,7 +68,21 @@ function showMyDay(){
 }
 
 function ShowThisWeek() {
-    // This function would allow to display the hole week in the correspond container
+    
+    if(!mainContainer) {
+        console.log('Main Container element not found');
+        return false;
+    }
+
+    mainContainer.innerHTML = "";
+
+    const weekContainer = document.createElementWithClass("div", "week-container");
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    for (let i = 0; i < daysOfWeek.length; i ++) {
+        let dayContainer = document.createElementWithClass("div", `day-container ${i}`);
+        weekContainer.appendChild(dayContainer);
+    }
 }
 
 function dates() {
