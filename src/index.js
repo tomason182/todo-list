@@ -1,5 +1,5 @@
 import './styles.css';
-import { showMyDay, handleProjectsInputs } from './todo';
+import { showMyDay, showThisWeek, handleProjectsInputs } from './todo';
 import { setProjectInLocalStorage } from './local-storage';
 
 const handleSidebarElements = () => {
@@ -12,7 +12,9 @@ const handleSidebarElements = () => {
 
     if (clickedItem.classList[0] === 'my-day') {
       console.log('my day was pressed');
+      showMyDay();
     }else if (clickedItem.classList[0] === 'week') {
+      showThisWeek()
       console.log('the week element was pressed');
     }else if (clickedItem.classList[0] === 'calendar') {
       console.log('the calendar was pressed');
