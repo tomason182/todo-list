@@ -78,12 +78,13 @@ function showThisWeek() {
 
     const weekContainer = createElementWithClass("div", "week-container");
     const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    
-
 
     for (let i = 0; i < daysOfWeek.length; i ++) {
         const dayContainer = createElementWithClass("div", "day-container");
         const weekTitleContainer = createElementWithClass("div", "week-title-container");
+        const dailyWeekTaskContainer = createElementWithClass("div", "daily-week-task-container");
+        const dailyWeekTaskInputContainer = createElementWithClass("div", "daily-week-task-input-container");
+
         const dayName = createElementWithClass("h3", "day-name");
         const date = createElementWithClass("h3", "week-date");
         dayContainer.classList.add(daysOfWeek[i]);
@@ -98,7 +99,19 @@ function showThisWeek() {
         weekTitleContainer.appendChild(dayName);
         weekTitleContainer.appendChild(date);
 
+        const dailyWeekList = createElementWithClass("ul", "daily-week-task");
+        const dailyWeekListItem = document.createElement("li");
+        const dailyInputTask = document.createElement("input");
+        dailyInputTask.type = "text";
+        dailyInputTask.placeholder = "Enter new task";
+
+        dailyWeekListItem.appendChild(dailyInputTask);
+        dailyWeekList.appendChild(dailyWeekListItem);
+        dailyWeekTaskContainer.appendChild(dailyWeekList);
+
         dayContainer.appendChild(weekTitleContainer);
+        dayContainer.appendChild(dailyWeekTaskContainer);
+        dayContainer.appendChild(dailyWeekTaskInputContainer);
 
         weekContainer.appendChild(dayContainer);
     }
