@@ -84,8 +84,8 @@ function showThisWeek() {
     for (let i = 0; i < daysOfWeek.length; i ++) {
         const dayContainer = createElementWithClass("div", "day-container");
         const weekTitleContainer = createElementWithClass("div", "week-title-container");
-        const dayName = createElementWithClass("div", "day-name");
-        const date = createElementWithClass("div", "week-date");
+        const dayName = createElementWithClass("h3", "day-name");
+        const date = createElementWithClass("h3", "week-date");
         dayContainer.classList.add(daysOfWeek[i]);
 
         dayName.textContent = daysOfWeek[i];

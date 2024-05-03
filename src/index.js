@@ -80,6 +80,6 @@ if (localStorage.length === 0) {
 }
 
 handleSidebarElements();
-showMyDay();
+showThisWeek();
 
 console.log('everything is working awesome!');
