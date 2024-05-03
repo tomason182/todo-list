@@ -117,6 +117,8 @@ function showThisWeek() {
     }
 
     mainContainer.appendChild(weekContainer);
+
+    handleUserWeeklyInputs();
 }
 
 function dates() {
@@ -245,6 +247,20 @@ function handleUserInput() {
                 element.value = '';
             }
         }
+    });
+}
+
+function handleUserWeeklyInputs() {
+    const weeklyContainers = document.querySelectorAll(".day-container");
+
+    weeklyContainers.forEach((container) => {
+        container.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                const containerData = 6;
+                console.log(container.querySelector(".week-title-container"));
+                console.log(container.querySelector("input[type='text']").value);
+            }
+        });
     });
 }
 
