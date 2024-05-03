@@ -86,18 +86,24 @@ function showThisWeek() {
         const dailyWeekTaskInputContainer = createElementWithClass("div", "daily-week-task-input-container");
 
         const dayName = createElementWithClass("h3", "day-name");
-        const date = createElementWithClass("h3", "week-date");
+        const formattedDate = createElementWithClass("h3", "week-date");
+        const nonFormattedDate = createElementWithClass("p", "non-formatted-date");
+        nonFormattedDate.style.display = "none";
+
         dayContainer.classList.add(daysOfWeek[i]);
 
         dayName.textContent = daysOfWeek[i];
-        date.textContent = `${dates().getWeek()[i].formattedDay}-${dates().getWeek()[i].formattedMonth}`;
+        formattedDate.textContent = `${dates().getWeek()[i].formattedDay}-${dates().getWeek()[i].formattedMonth}`;
+
+        nonFormattedDate.textContent = dates().getWeek()[i].date;
 
         if (dates().getWeek()[i].today === true) {
             dayContainer.classList.add ("today");
         }
 
         weekTitleContainer.appendChild(dayName);
-        weekTitleContainer.appendChild(date);
+        weekTitleContainer.appendChild(formattedDate);
+        weekTitleContainer.appendChild(nonFormattedDate)
 
         const dailyWeekList = createElementWithClass("ul", "daily-week-task");
         const dailyWeekListItem = document.createElement("li");
