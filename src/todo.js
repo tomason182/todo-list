@@ -89,7 +89,7 @@ function showThisWeek() {
         dayContainer.classList.add(daysOfWeek[i]);
 
         dayName.textContent = daysOfWeek[i];
-        date.textContent = "Here goes the date";
+        date.textContent = `${dates().getWeek()[i].formattedDay}-${dates().getWeek()[i].formattedMonth}`;
 
         weekTitleContainer.appendChild(dayName);
         weekTitleContainer.appendChild(date);
