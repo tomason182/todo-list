@@ -91,6 +91,10 @@ function showThisWeek() {
         dayName.textContent = daysOfWeek[i];
         date.textContent = `${dates().getWeek()[i].formattedDay}-${dates().getWeek()[i].formattedMonth}`;
 
+        if (dates().getWeek()[i].today === true) {
+            dayContainer.classList.add ("today");
+        }
+
         weekTitleContainer.appendChild(dayName);
         weekTitleContainer.appendChild(date);
 
@@ -122,49 +126,56 @@ function dates() {
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
-                "index": 1
+                "index": 1,
+                "today": false
             },
             {
                 "dayName": "Tuesday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
-                "index": 2
+                "index": 2,
+                "today": false
             },
             {
                 "dayName": "Wednesday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
-                "index": 3
+                "index": 3,
+                "today": false,
             },
             {
                 "dayName": "Thursday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
-                "index": 4
+                "index": 4,
+                "today": false,
             },
             {
                 "dayName": "Friday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
-                "index": 5
+                "index": 5,
+                "today": false
             },
             {
                 "dayName": "Saturday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
-                "index": 6
+                "index": 6,
+                "today": false
             },
             {
                 "dayName": "Sunday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
-                "index": 7
+                "index": 7,
+                "today": false
             }    
         ];
 
@@ -172,22 +183,27 @@ function dates() {
             if(today.getDay() === 0){
                 if(obj.index === today.getDay() + 7) {
                     obj.date = today;
+                    obj.today = true;
                     obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
                     obj.formattedMonth = String(obj.date.getMonth()).padStart(2, "0");
                 } else {
                     obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (7 - obj.index));
+                    obj.today = false;
                 }
             } else {
                 if(obj.index === today.getDay()) {
                     obj.date = today;
+                    obj.today = true;
                     obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
                     obj.formattedMonth = String(obj.date.getMonth()).padStart(2, "0");
                 }else if(obj.index < today.getDay()) {
                     obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (today.getDay() - obj.index));
+                    obj.today = false;
                     obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
                     obj.formattedMonth = String(obj.date.getMonth()).padStart(2, "0");
                 }else{
                     obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (obj.index - today.getDay()));
+                    obj.today = false;
                     obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
                     obj.formattedMonth = String(obj.date.getMonth()).padStart(2, "0");
                 }

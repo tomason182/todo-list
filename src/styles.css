@@ -100,13 +100,17 @@ header {
     width: 15vw;
     min-width: 150px;
     height: 25vh;
-    border: 1px solid red;
+    border: none;
     margin: 1rem;
 }
 
+.week-container > .day-container.today {
+    color: #457b9d;
+}
 .week-title-container {
     display: flex;
     justify-content: space-between;
     padding: 0rem .77rem;
     border-bottom: 1px solid #bbb;
 }
+
