@@ -111,42 +111,42 @@ function dates() {
                 "index": 0
             },
             {
-                "day": "Monday",
+                "dayName": "Monday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
                 "index": 1
             },
             {
-                "day": "Tuesday",
+                "dayName": "Tuesday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
                 "index": 2
             },
             {
-                "day": "Wednesday",
+                "dayName": "Wednesday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
                 "index": 3
             },
             {
-                "day": "Thursday",
+                "dayName": "Thursday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
                 "index": 4
             },
             {
-                "day": "Friday",
+                "dayName": "Friday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
                 "index": 5
             },
             {
-                "day": "Saturday",
+                "dayName": "Saturday",
                 "date": null,
                 "formattedDay": null,
                 "formattedMonth": null,
@@ -157,16 +157,23 @@ function dates() {
         week.forEach((obj) => {
             if(obj.index === today.getDay()) {
                 obj.date = today;
+                obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
+                obj.formattedMonth = String(obj.date.getMonth()).padStart(2, "0");
             }else if(obj.index < today.getDay()) {
                 obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (today.getDay() - obj.index));
                 obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
+                obj.formattedMonth = String(obj.date.getMonth()).padStart(2, "0");
             }else{
                 obj.date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (obj.index - today.getDay()));
+                obj.formattedDay = String(obj.date.getDate()).padStart(2, "0"); // Maybe is better to have a function that format the dates
+                obj.formattedMonth = String(obj.date.getMonth()).padStart(2, "0");
             }
         });
+
+        return week;
     }
     
-    return {getToday};
+    return {getToday, getWeek};
 }
 
 function handleUserInput() {
