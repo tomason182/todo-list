@@ -78,10 +78,24 @@ function showThisWeek() {
 
     const weekContainer = createElementWithClass("div", "week-container");
     const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    
+
 
     for (let i = 0; i < daysOfWeek.length; i ++) {
-        let dayContainer = createElementWithClass("div", "day-container");
+        const dayContainer = createElementWithClass("div", "day-container");
+        const weekTitleContainer = createElementWithClass("div", "week-title-container");
+        const dayName = createElementWithClass("div", "day-name");
+        const date = createElementWithClass("div", "week-date");
         dayContainer.classList.add(daysOfWeek[i]);
+
+        dayName.textContent = daysOfWeek[i];
+        date.textContent = "Here goes the date";
+
+        weekTitleContainer.appendChild(dayName);
+        weekTitleContainer.appendChild(date);
+
+        dayContainer.appendChild(weekTitleContainer);
+
         weekContainer.appendChild(dayContainer);
     }
 
