@@ -262,8 +262,9 @@ function handleUserWeeklyInputs() {
     weeklyContainers.forEach((container) => {
         container.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
-                const containerData = 6;
-                console.log(container.querySelector(".week-title-container"));
+                const containerDateRaw = container.querySelector(".week-title-container > .non-formatted-date").textContent;
+                const containerDate = new Date(containerDateRaw);
+                console.log(containerDate.getDate());
                 console.log(container.querySelector("input[type='text']").value);
             }
         });
